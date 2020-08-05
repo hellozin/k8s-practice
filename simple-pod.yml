@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo
+spec:
+  containers:
+  - image: idock.daumkakao.io/ian_hellozin/demo
+    name: demo
+    ports:
+    - containerPort: 8080
+      protocol: TCP
