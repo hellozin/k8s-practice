@@ -1,0 +1,46 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: demo
+spec:
+  template:
+    metadata:
+      labels:
+        run: demo
+    spec:
+      containers:
+        - image: idock.daumkakao.io/ian_hellozin/demo:latest
+          imagePullPolicy: Always
+          name: demo
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: demo
+  name: demo
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    run: demo
+  type: NodePort
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: demo
+spec:
+  rules:
+    - host: dkosv3-ian-hellozin-worker-1.ay1.krane.9rum.cc
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: demo
+              servicePort: 8080
