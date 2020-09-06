@@ -15,17 +15,46 @@ mini kube context 사용
 `kubectl config use-context minikube`
 
 # Simple Tutorial
-'echoserver' 파드 생성
 
-`kubectl run echoserver --generator=run-pod/v1 --image="k8s.gcr.io/echoserver:1.10" --port=8080`
+## ReplicaSet으로 파드 관리하기
 
-'echoserver' 서비스 생성
+**이미지 docker hub에 push**
+```bash
+docker tag demo hellozin/demo
+docker push hellozin/demo
+```
 
-`kubectl expose po echoserver --type=NodePort`
+**ReplicaSet descriptor 생성**
+```yaml
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: demo-rs
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      foo: bar
+  template:
+    metadata:
+      labels:
+        foo: bar
+    spec:
+      containers:
+      - name: demo
+        image: hellozin/demo
+```
 
-pod, service 정보 확인
+`kubectl apply -f path/to/replica-set.yaml`
 
-`kubectl get [pods, services]`
+**파드 생성 확인**
+```bash
+$ kubectl get pods
+NAME                    READY   STATUS    RESTARTS   AGE
+demo-rs-bz62h   1/1     Running   0          6m42s
+demo-rs-nnkv9   1/1     Running   0          6m42s
+demo-rs-z4486   1/1     Running   0          6m42s
+```
 
 ```bash
 $ kubectl get pods
@@ -37,6 +66,3 @@ NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
 echoserver   NodePort    10.103.154.31   <none>        8080:32408/TCP   72s
 kubernetes   ClusterIP   10.96.0.1       <none>        443/TCP          3d17h
 ```
-
-# Todo know
-- 서비스 타입

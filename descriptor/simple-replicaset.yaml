@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: demo-replicaset
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      previous: frontend
+  template:
+    metadata:
+      labels:
+        previous: frontend
+    spec:
+      containers:
+      - name: demo
+        image: hellozin/demo
