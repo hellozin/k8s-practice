@@ -1,6 +1,19 @@
 # k8s-practice
 Practice and Demo for K8S
 
+# Mini kube
+mini kube 상태 확인
+
+`minikube status`
+
+mini kube 시작/종료
+
+`minikube start/stop`
+
+mini kube context 사용
+
+`kubectl config use-context minikube`
+
 # Simple Tutorial
 'echoserver' 파드 생성
 
