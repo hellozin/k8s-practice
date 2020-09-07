@@ -6,11 +6,11 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      previous: frontend
+      foo: bar
   template:
     metadata:
       labels:
-        previous: frontend
+        foo: bar
     spec:
       containers:
       - name: demo
