@@ -123,12 +123,12 @@ $ kubectl create -f path/to/ingress.yaml
 ```bash
 $ kubectl get ingresses
 NAME           CLASS    HOSTS         ADDRESS        PORTS   AGE
-demo-ingress   <none>   hellozin.me   192.168.64.2   80      9m42s
+demo-ingress   <none>   hellozin.me   <ingress ip>   80      9m42s
 
 $ cat /etc/hosts
 ...
 # Kubernetes ingress demo
-192.168.64.2 hellozin.me
+<ingress ip> hellozin.me
 
 $ curl http://hellozin.me
 Hi, there.
