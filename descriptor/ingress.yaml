@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: demo-ingress
+spec:
+  rules:
+    - host: hellozin.me
+      http:
+        paths:
+        - path: /
+          backend:
+            serviceName: demo-service
+            servicePort: 80
