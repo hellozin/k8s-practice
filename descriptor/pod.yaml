@@ -4,8 +4,11 @@ metadata:
   name: demo
 spec:
   containers:
-  - image: idock.daumkakao.io/ian_hellozin/demo
+  - image: hellozin/demo
     name: demo
+    env:
+    - name: hello.env
+      value: "Hi, there."
     ports:
     - containerPort: 8080
       protocol: TCP
