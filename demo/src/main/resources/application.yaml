@@ -1,7 +1,5 @@
 info:
-  name: ian
-  age: 27
+  name: None
+  age: 0
   locations:
-    - pangyo
-    - gumi
-    - deagu
+    - None

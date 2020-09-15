@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-with-volume-config
+spec:
+  containers:
+  - image: hellozin/demo
+    name: demo
+    env:
+    - name: phase
+      valueFrom:
+        configMapKeyRef:
+          name: phase-config-map
+          key: phase
+    volumeMounts:
+    - name: properties
+      mountPath: /config
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+  volumes:
+  - name: properties
+    configMap:
+      name: hello-file-config
