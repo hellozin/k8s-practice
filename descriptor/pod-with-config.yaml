@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo
+spec:
+  containers:
+  - image: hellozin/demo
+    name: demo
+    env:
+    - name: phase
+      valueFrom:
+        configMapKeyRef:
+          name: phase-config-map
+          key: phase
+    ports:
+    - containerPort: 8080
+      protocol: TCP

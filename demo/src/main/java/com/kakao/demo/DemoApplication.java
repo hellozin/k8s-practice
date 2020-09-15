@@ -1,5 +1,6 @@
 package com.kakao.demo;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,11 +10,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
+@RequiredArgsConstructor
 public class DemoApplication {
+
+    private final Info info;
 
     @GetMapping("/")
     public String greeting() {
         return "Hi, there.";
+    }
+
+    @GetMapping("/info")
+    public Info info() {
+        return info;
     }
 
     public static void main(String[] args) {
@@ -24,8 +33,8 @@ public class DemoApplication {
     class Runner implements CommandLineRunner {
         @Override
         public void run(String... args) {
-            String env = System.getenv("hello.env");
-            System.out.println("=== hello.env : [" + env + "] ===");
+            String env = System.getenv("phase");
+            System.out.println("=== phase : [" + env + "] ===");
         }
     }
 
