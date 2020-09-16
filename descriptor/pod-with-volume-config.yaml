@@ -14,7 +14,8 @@ spec:
           key: phase
     volumeMounts:
     - name: properties
-      mountPath: /config
+      mountPath: /etc/hello-info
+      subPath: simple-config.yaml
     ports:
     - containerPort: 8080
       protocol: TCP
