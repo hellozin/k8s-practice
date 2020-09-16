@@ -22,3 +22,6 @@ spec:
   - name: properties
     configMap:
       name: hello-file-config
+      items:
+      - key: simple-config.yaml
+        path: simple-config.yaml
