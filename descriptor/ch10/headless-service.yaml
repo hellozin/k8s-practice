@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubia
+spec:
+  clusterIP: None  # 헤드리스 서비스가 된다
+  selector:
+    app: kubia
+  ports:
+  - name: http
+    port: 80
