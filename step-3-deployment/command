@@ -1,0 +1,10 @@
+kubectl apply -f deployment.yaml
+kubectl get deployment
+kubectl get replicaset
+kubectl get pod
+== update container image version ==
+kubectl set image deployment simple-deployment simple-server=hellozin/simple:v2
+kubectl describe deployment simple-deployment
+== rollback ==
+kubectl rollout undo deployment simple-deployment
+kubectl describe deployment simple-deployment
