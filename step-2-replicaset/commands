@@ -1,0 +1,9 @@
+kubectl apply -f replicaset.yaml
+kubectl get replicaset
+kubectl get pods
+kubectl delete pod simple-replicaset-j5wtk
+kubectl get pods
+kubectl describe replicaset simple-replicaset
+kubectl scale replicaset simple-replicaset --replicas 2
+kubectl get pods
+kubectl describe replicaset simple-replicaset
