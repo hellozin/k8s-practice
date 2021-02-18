@@ -6,6 +6,3 @@ spec:
   containers:
   - image: hellozin/simple
     name: simple-server
-    ports:
-    - containerPort: 8080
-      protocol: TCP

@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   name: simple-replicaset
-  labels:
-    app: simple
 spec:
   replicas: 3
   selector:
