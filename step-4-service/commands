@@ -1,0 +1,10 @@
+== deployment, service 생성 ==
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+== service의 external ip 확인, Pending일 경우 잠시 대기 ==
+kubectl get service simple-service
+== service의 external ip로 파드 접근 (파드의 이름을 반환한다) ==
+curl <SERVICE_EXTERNAL_IP>/host
+== clean ==
+kubectl delete deployment simple-deployment
+kubectl delete service simple-service
