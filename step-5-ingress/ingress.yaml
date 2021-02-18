@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: simple-ingress
+spec:
+  rules:
+  - host: ian-hellozin.devel.kakao.com
+    http:
+      paths:
+        - path: /name
+          backend:
+            serviceName: simple-service-name
+            servicePort: 80
+        - path: /age
+          backend:
+            serviceName: simple-service-age
+            servicePort: 80
